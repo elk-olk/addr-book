@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
+
 
 namespace WebAddressbookTests
 {
@@ -18,13 +16,13 @@ namespace WebAddressbookTests
         public void TheUntitledTest()
         {
             navigationHelper.GotoHomePage();
-            LoginHelper.Login(new AccountData("admin", "secret"));
+            loginHelper.Login(new AccountData("admin", "secret"));
             navigationHelper.GotoHomePage();
-            SelectContact("14");
-            DeleteContact();
+            contactHelper.SelectContact("15");
+            contactHelper. DeleteContact();
             CloseAlertAndGetItsText();
             //Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
-            LoginHelper.Logout();
+            loginHelper.Logout();
         }
     }
 }
