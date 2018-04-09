@@ -9,15 +9,10 @@ using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
 {
-    public class ContactHelper
-    {
-        private IWebDriver driver;
-        private string baseURL;
-
-        public ContactHelper(IWebDriver driver, string baseURL)
+    public class ContactHelper:HelperBase
+    { 
+        public ContactHelper(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
-            this.baseURL = baseURL;
         }
 
 

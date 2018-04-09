@@ -10,16 +10,11 @@ using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
 {
-    public class GroupHelper
+    public class GroupHelper:HelperBase
     {
-        private IWebDriver driver;
-        private string baseURL;
 
-        public GroupHelper(IWebDriver driver, string baseURL)
+        public GroupHelper(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
-            this.baseURL = baseURL;
-
         }
 
         public void FillGroupForm(GroupData group)

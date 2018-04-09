@@ -16,7 +16,8 @@ namespace WebAddressbookTests
         protected LoginHelper loginHelper;
         protected NavigationHelper navigationHelper;
         protected GroupHelper groupHelper;
-        protected ContactHelper contactHelper; 
+        protected ContactHelper contactHelper;
+        protected HelperBase helperBase;
         protected bool acceptNextAlert = true;
         protected string baseURL;
 
@@ -31,8 +32,8 @@ namespace WebAddressbookTests
             verificationErrors = new StringBuilder();
             loginHelper = new LoginHelper(driver);
             navigationHelper = new NavigationHelper(driver, baseURL);
-            groupHelper = new GroupHelper(driver, baseURL);
-            contactHelper = new ContactHelper(driver, baseURL);
+            groupHelper = new GroupHelper(driver);
+            contactHelper = new ContactHelper(driver);
         }
 
         //Alerts methods
