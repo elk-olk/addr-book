@@ -61,6 +61,7 @@
     <Compile Include="AccountData.cs" />
     <Compile Include="ContactCreationTests.cs" />
     <Compile Include="ContactData.cs" />
+    <Compile Include="ContactRemovalTests.cs" />
     <Compile Include="GroupData.cs" />
     <Compile Include="GroupRemovalTest.cs" />
     <Compile Include="LoginHelper.cs" />
