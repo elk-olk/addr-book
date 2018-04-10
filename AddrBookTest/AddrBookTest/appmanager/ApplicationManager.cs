@@ -1,40 +1,75 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using NUnit.Framework;
+using System.Threading.Tasks;
+//using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
+
 namespace WebAddressbookTests
 {
-    public class TestBase
+     public class ApplicationManager
     {
         protected IWebDriver driver;
-        private StringBuilder verificationErrors;
+        protected string baseURL;
         protected LoginHelper loginHelper;
         protected NavigationHelper navigationHelper;
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
-        protected HelperBase helperBase;
-        protected bool acceptNextAlert = true;
-        protected string baseURL;
 
-        [SetUp]
-        public void SetupTest()
+        public bool acceptNextAlert = true;
+
+        public ApplicationManager()
         {
             FirefoxOptions options = new FirefoxOptions();
             options.BrowserExecutableLocation = @"c:\Program Files\Mozilla Firefox\firefox.exe";
             options.UseLegacyImplementation = true;
-            driver = new FirefoxDriver(options);
-            baseURL = "http://localhost/";
-            verificationErrors = new StringBuilder();
             loginHelper = new LoginHelper(driver);
             navigationHelper = new NavigationHelper(driver, baseURL);
             groupHelper = new GroupHelper(driver);
             contactHelper = new ContactHelper(driver);
         }
+
+        public void Stop()
+        {
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception)
+            {
+                // Ignore errors if unable to close the browser
+            }
+        }
+
+
+        public LoginHelper Auth
+        {
+            get
+            {
+                return loginHelper;
+            }
+        }
+
+        public NavigationHelper Navigator
+        {
+            get
+            {
+                return Navigator;
+            }
+        }
+
+        public GroupHelper Groups
+        {
+            get
+            {
+                return groupHelper;
+            }
+        }
+
 
         //Alerts methods
         protected bool IsAlertPresent()
@@ -50,7 +85,7 @@ namespace WebAddressbookTests
             }
         }
 
-        protected string CloseAlertAndGetItsText()
+        public string CloseAlertAndGetItsText()
         {
             try
             {
@@ -70,20 +105,15 @@ namespace WebAddressbookTests
             {
                 acceptNextAlert = true;
             }
+
         }
 
-        [TearDown]
-        public void TeardownTest()
+        public ContactHelper Contacts
         {
-            try
+            get
             {
-                driver.Quit();
+                return contactHelper;
             }
-            catch (Exception)
-            {
-                // Ignore errors if unable to close the browser
-            }
-            Assert.AreEqual("", verificationErrors.ToString());
         }
     }
 }

@@ -15,14 +15,14 @@ namespace WebAddressbookTests
         [Test]
         public void TheUntitledTest()
         {
-            navigationHelper.GotoHomePage();
-            loginHelper.Login(new AccountData("admin", "secret"));
-            navigationHelper.GotoHomePage();
-            contactHelper.SelectContact("15");
-            contactHelper. DeleteContact();
-            CloseAlertAndGetItsText();
+            app.Navigator.GotoHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
+            app.Navigator.GotoHomePage();
+            app.Contacts.SelectContact("17");
+            app.Contacts. DeleteContact();
+            app.CloseAlertAndGetItsText();
             //Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
-            loginHelper.Logout();
+            app.Auth.Logout();
         }
     }
 }

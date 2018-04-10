@@ -15,7 +15,6 @@ namespace WebAddressbookTests
         {
         }
 
-
         public void DeleteContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();

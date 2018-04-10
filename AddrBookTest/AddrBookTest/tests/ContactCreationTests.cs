@@ -13,9 +13,9 @@ namespace WebAddressbookTests
         [Test]
         public void AddContact()
         {
-            navigationHelper.GotoHomePage();
-            loginHelper.Login(new AccountData("admin", "secret"));
-            navigationHelper.GotoAddNewContact();
+            app. Navigator.GotoHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
+            app.Navigator.GotoAddNewContact();
             ContactData contact = new ContactData("Steblevska");
             contact.NickName = "olk";
             contact.Address = "Kiev1";
@@ -44,8 +44,8 @@ namespace WebAddressbookTests
             contact.PhoneWork = "380444905516";
             contact.Title = "Mrs";
 
-            contactHelper.FillContactForm(contact);
-            loginHelper.Logout();
+            app.Contacts.FillContactForm(contact);
+            app.Auth.Logout();
         }
     }
 }
